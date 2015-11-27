@@ -1,0 +1,53 @@
+﻿@using System.Drawing
+@model MrCMS.Web.Apps.Companies.Pages.Company
+<a href="/@Model.Parent.UrlSegment" class="btn btn-default">@Resource("Back", "Back")</a>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="media">
+            <div class="media-left">
+                @if (!String.IsNullOrEmpty(Model.FeatureImage))
+                {
+                    <a href="/@Model.LiveUrlSegment" class="media-object">@RenderImage(Model.FeatureImage, new Size { Width = 120 })</a>
+                }
+            </div>
+            <div class="media-body">
+                <div class="media-heading">
+                    <h1>@Editable(Model, p => p.Name, false)</h1>
+                </div>
+
+                @Html.DisplayFor(m => m.WebSite) <br />
+
+                @Editable(Model, p => p.FocusOf, false)
+            </div>
+        </div>
+
+
+        @if (Model.Addresses != null && Model.Addresses.Any())
+        {
+            <hr />
+            <h4>@Resource("Addresses", "Addresses")</h4>
+            @Html.DisplayFor(m => m.Addresses)
+        }
+
+
+        @if (Model.PhoneNumbers != null && Model.PhoneNumbers.Any())
+        {
+            <hr />
+            <h4>@Resource("Phone Numbers", "Phone Numbers")</h4>
+            @Html.DisplayFor(m => m.PhoneNumbers)
+        }
+
+
+        @if (Model.Emails != null && Model.Emails.Any())
+        {
+            <hr />
+            <h4>@Resource("Emails", "Emails")</h4>
+            @Html.DisplayFor(m => m.Emails)
+        }
+
+        @Editable(Model, page => page.BodyContent, true)
+
+    </div>
+</div>

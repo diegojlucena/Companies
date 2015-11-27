@@ -1,0 +1,40 @@
+﻿@using System.Drawing
+@using MrCMS.Helpers
+@using MrCMS.Paging
+@using MrCMS.Web.Apps.Companies.Pages
+@model CompanyList
+@Editable(Model, p => p.BodyContent, true)
+@{
+    var pagedList = ViewData["paged-companies"] as IPagedList<Company>;
+   // var searchModel = ViewData["company-search-model"] as CompanySearchModel;
+}
+@*@if (pagedList !=null && !pagedList.Any() && !string.IsNullOrEmpty(searchModel.Category))
+    {
+        <div class="alert alert-info">No posts available in category "@searchModel.Category".</div>
+        <p><a href="/@Model.LiveUrlSegment">Show all</a></p>
+    }*@
+@if (pagedList != null)
+{
+    foreach (var page in pagedList)
+    {
+        if (page.PublishOn != null)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="/@page.LiveUrlSegment">@RenderImage(page.FeatureImage, new Size { Width = 50 }, null, null, new { @class = "media-object" })</a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="/@page.LiveUrlSegment">@page.Name </a></h4>
+                            @Html.DisplayFor(m => page.FocusOf)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
+}
+@Html.PageCurrentPage(pagedList, i => new { Page = i }, PagedListRenderOptions.PageNumbersOnly)

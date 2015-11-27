@@ -1,0 +1,156 @@
+﻿@using System.Linq
+@using System.Web.Mvc.Html
+@using MrCMS.Helpers
+@model MrCMS.Web.Apps.Companies.Pages.Company
+
+<div class="form-group">
+    @Html.LabelFor(model => model.FeatureImage, "Logo") <br />
+    @Html.TextBoxFor(model => model.FeatureImage, new { data_type = "media-selector" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.IdNumber)
+    @Html.TextBoxFor(model => model.IdNumber, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.IdNumber)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.WebSite)
+    @Html.TextBoxFor(model => model.WebSite, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.WebSite)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.FocusOf)
+    @Html.TextAreaFor(model => model.FocusOf, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.FocusOf)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.TagList, "Tags")
+    @Html.TextBoxFor(x => x.TagList, new { @class = "form-control system-tagging" })
+</div>
+@Html.InfoBlock(Resource("Heads up!"), Resource("Set the tags here you would like to use as your categories for this company."))
+
+<hr />
+
+<a href="@Url.Action(Resource("Add"), "CompanyAddress", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">Add Address</a>
+<h3>@Resource("Addresses")</h3>
+@if (Model.Addresses != null && Model.Addresses.Any())
+{
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Resource("Address")
+                </th>
+                <th>
+                    @Resource("City")
+                </th>
+                <th>
+                    @Resource("State/Province")
+                </th>
+                <th>@Resource("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Addresses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Address1) - @Html.DisplayFor(m => item.Address2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.StateProvince)
+                    </td>
+                    <td style="width: 110px">
+                        <div class="btn-group">
+                            @Html.ActionLink( Resource("Edit"), "Edit", "CompanyAddress", new { id = item.Id }, new { @class = "btn btn-default btn-sm", data_toggle = "fb-modal" })
+                            @Html.ActionLink(Resource("Delete"), "Delete", "CompanyAddress", new { id = item.Id }, new { @class = "btn btn-sm btn-danger", data_toggle = "fb-modal" })
+                        </div>
+                    <td />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<hr />
+
+<a href="@Url.Action("Add", "CompanyEmail", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">Add Email</a>
+<h3>Emails</h3>
+@if (Model.Emails != null && Model.Emails.Any())
+{
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Kind
+                </th>
+                <th>
+                    Email Address
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Emails)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Kind)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.EmailAddress)
+                    </td>
+                    <td style="width: 110px">
+                        <div class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", "CompanyEmail", new { id = item.Id }, new { @class = "btn btn-default btn-sm", data_toggle = "fb-modal" })
+                            @Html.ActionLink("Delete", "Delete", "CompanyEmail", new { id = item.Id }, new { @class = "btn btn-sm btn-danger", data_toggle = "fb-modal" })
+                        </div>
+                    <td />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<hr />
+
+<a href="@Url.Action("Add", "CompanyPhoneNumber", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">Add Phone Number</a>
+<h3>Phone Numbers</h3>
+@if (Model.PhoneNumbers != null && Model.PhoneNumbers.Any())
+{
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Kind
+                </th>
+                <th>
+                    Phone Numbers
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PhoneNumbers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Kind)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.PhoneNumber)
+                    </td>
+                    <td style="width: 110px">
+                        <div class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", "CompanyPhoneNumber", new { id = item.Id }, new { @class = "btn btn-default btn-sm", data_toggle = "fb-modal" })
+                            @Html.ActionLink("Delete", "Delete", "CompanyPhoneNumber", new { id = item.Id }, new { @class = "btn btn-sm btn-danger", data_toggle = "fb-modal" })
+                        </div>
+                    <td />
+                </tr>
+            }
+        </tbody>
+    </table>
+}

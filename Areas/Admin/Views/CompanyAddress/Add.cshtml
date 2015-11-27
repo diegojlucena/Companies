@@ -1,0 +1,48 @@
+﻿@using System.Web.Mvc.Html
+@model MrCMS.Web.Apps.Companies.Entities.CompanyAddress
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPopup.cshtml";
+}
+@using (Html.BeginForm("Add", "CompanyAddress", new { id = "" }, FormMethod.Post))
+{
+    <fieldset>
+        <legend>
+            @Resource("Add Address")
+            <span class="btn-group display-inline pull-right">
+                <input type="submit" class="btn-success btn" value="Add" />
+            </span>
+        </legend>
+        @Html.HiddenFor(item => item.Company.Id)
+        <div class="form-group">
+            @Html.LabelFor(x => x.Address1)
+            @Html.TextBoxFor(x => x.Address1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Address1)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Address2)
+            @Html.TextBoxFor(x => x.Address2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Address2)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.City)
+            @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.City)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.StateProvince)
+            @Html.TextBoxFor(x => x.StateProvince, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.StateProvince)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.CountryCode)
+            @Html.TextBoxFor(x => x.CountryCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CountryCode)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.PostalCode)
+            @Html.TextBoxFor(x => x.PostalCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.PostalCode)
+        </div>
+    </fieldset>
+}
+

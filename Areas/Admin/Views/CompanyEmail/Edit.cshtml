@@ -1,0 +1,29 @@
+﻿@model MrCMS.Web.Apps.Companies.Entities.CompanyEmail
+@using System.Web.Mvc.Html
+@{ Layout = "~/Areas/Admin/Views/Shared/_LayoutPopup.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "CompanyEmail", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Id)
+    <fieldset>
+        <legend>
+            Edit Email
+            <span class="btn-group display-inline pull-right">
+                <input type="submit" class="btn-success btn" value="Edit" />
+            </span>
+        </legend>
+        @Html.HiddenFor(item => item.Company.Id)
+        
+        <div class="form-group">
+            @Html.LabelFor(x => x.Kind)
+            @Html.TextBoxFor(x => x.Kind, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Kind)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.EmailAddress)
+            @Html.TextBoxFor(x => x.EmailAddress, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.EmailAddress)
+        </div>
+    </fieldset>
+}

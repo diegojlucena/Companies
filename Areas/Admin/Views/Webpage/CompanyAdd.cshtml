@@ -1,0 +1,29 @@
+﻿@using MrCMS.Helpers
+@model MrCMS.Web.Apps.Companies.Pages.Company
+<div class="form-group">
+    @Html.LabelFor(model => model.FeatureImage, "Logo") <br />
+    @Html.TextBoxFor(model => model.FeatureImage, new { data_type = "media-selector" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.IdNumber)
+    @Html.TextBoxFor(model => model.IdNumber, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.IdNumber)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.WebSite)
+    @Html.TextBoxFor(model => model.WebSite, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.WebSite)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.FocusOf)
+    @Html.TextAreaFor(model => model.FocusOf, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.FocusOf)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.TagList, "Tags")
+    @Html.TextBoxFor(x => x.TagList, new { @class = "form-control system-tagging" })
+</div>
+@Html.InfoBlock("Heads up! ", "Set the tags here you would like to use as your categories for this company.")
