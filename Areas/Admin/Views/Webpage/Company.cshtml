@@ -31,7 +31,7 @@
 
 <hr />
 
-<a href="@Url.Action(Resource("Add"), "CompanyAddress", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">Add Address</a>
+<a href="@Url.Action("Add", "CompanyAddress", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">@Resource("Add Address")</a>
 <h3>@Resource("Addresses")</h3>
 @if (Model.Addresses != null && Model.Addresses.Any())
 {
@@ -77,7 +77,7 @@
 
 <hr />
 
-<a href="@Url.Action("Add", "CompanyEmail", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">Add Email</a>
+<a href="@Url.Action("Add", "CompanyEmail", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">@Resource("Add Email")</a>
 <h3>Emails</h3>
 @if (Model.Emails != null && Model.Emails.Any())
 {
@@ -85,12 +85,12 @@
         <thead>
             <tr>
                 <th>
-                    Kind
+                    @Resource("Kind")
                 </th>
                 <th>
-                    Email Address
+                    @Resource("Email Address")
                 </th>
-                <th>Actions</th>
+                <th>@Resource("Actions")</th>
             </tr>
         </thead>
         <tbody>
@@ -105,8 +105,8 @@
                     </td>
                     <td style="width: 110px">
                         <div class="btn-group">
-                            @Html.ActionLink("Edit", "Edit", "CompanyEmail", new { id = item.Id }, new { @class = "btn btn-default btn-sm", data_toggle = "fb-modal" })
-                            @Html.ActionLink("Delete", "Delete", "CompanyEmail", new { id = item.Id }, new { @class = "btn btn-sm btn-danger", data_toggle = "fb-modal" })
+                            @Html.ActionLink(@Resource("Edit"), "Edit", "CompanyEmail", new { id = item.Id }, new { @class = "btn btn-default btn-sm", data_toggle = "fb-modal" })
+                            @Html.ActionLink(@Resource("Delete"), "Delete", "CompanyEmail", new { id = item.Id }, new { @class = "btn btn-sm btn-danger", data_toggle = "fb-modal" })
                         </div>
                     <td />
                 </tr>
@@ -117,20 +117,20 @@
 
 <hr />
 
-<a href="@Url.Action("Add", "CompanyPhoneNumber", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">Add Phone Number</a>
-<h3>Phone Numbers</h3>
+<a href="@Url.Action("Add", "CompanyPhoneNumber", new { id = Model.Id })" class="pull-right btn btn-success" data-toggle="fb-modal">@Resource("Add Phone Number")</a>
+<h3>@Resource("Phone Numbers")</h3>
 @if (Model.PhoneNumbers != null && Model.PhoneNumbers.Any())
 {
     <table class="table table-condensed table-striped">
         <thead>
             <tr>
                 <th>
-                    Kind
+                    @Resource("Kind")
                 </th>
                 <th>
-                    Phone Numbers
+                    @Resource("Phone Numbers")
                 </th>
-                <th>Actions</th>
+                <th>@Resource("Actions")</th>
             </tr>
         </thead>
         <tbody>
