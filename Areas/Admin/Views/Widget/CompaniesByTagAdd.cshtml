@@ -1,0 +1,15 @@
+﻿@model MrCMS.Web.Apps.Companies.Widgets.CompaniesByTag
+<div class="form-group">
+    @Html.LabelFor(x => x.CompanList.Id, "Company List Page")
+    @Html.DropDownListFor(x => x.CompanList.Id, ViewData["CompanyLists"] as IEnumerable<SelectListItem>, new { data_val = "true", data_val_required = "Company list needs to be selected.", @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CompanList.Id)
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.Tag.Id, "Tag")
+    @Html.DropDownListFor(x => x.Tag.Id, ViewData["tags"] as IEnumerable<SelectListItem>, new { data_val = "true", data_val_required = "Tag needs to be selected.", @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Tag.Id)
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.ShowNameAsTitle)
+    @Html.CheckBoxFor(x => x.ShowNameAsTitle)
+</div>
