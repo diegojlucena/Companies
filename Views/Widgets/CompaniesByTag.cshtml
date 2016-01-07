@@ -1,0 +1,28 @@
+﻿@model MrCMS.Web.Apps.Companies.Models.CompaniesByTagViewModel  
+@if (Model != null)
+{
+    if (!String.IsNullOrEmpty(Model.Title))
+    {
+        <h4>@Model.Title</h4>
+    }
+    <div class="companiesbytag">
+        <ul class="companiesbytag-list">
+            @foreach (var company in Model.Companies)
+            {
+                <li class="no-content-print">
+                    <a href="/@company.LiveUrlSegment">
+                        @if (string.IsNullOrEmpty(company.FeatureImage) == false)
+                        {
+                            <img src="@company.FeatureImage" title="@company.Name" alt="@company.Name" />
+                        }
+                        else
+                        {
+                            @company.Name
+                        }
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    
+}
