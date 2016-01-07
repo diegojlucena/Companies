@@ -10,7 +10,7 @@
             @foreach (var company in Model.Companies)
             {
                 <li class="no-content-print">
-                    <a href="/@company.LiveUrlSegment">
+                    <a href="@company.WebSite" target="_blank">
                         @if (string.IsNullOrEmpty(company.FeatureImage) == false)
                         {
                             <img src="@company.FeatureImage" title="@company.Name" alt="@company.Name" />
