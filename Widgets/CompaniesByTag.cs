@@ -6,7 +6,7 @@ using MrCMS.Website;
 
 namespace MrCMS.Web.Apps.Companies.Widgets
 {
-    [OutputCacheable(PerPage = true)]
+    [WidgetOutputCacheable(PerPage = true)]
     public class CompaniesByTag : Widget
     {
         public virtual CompanyList CompanList { get; set; }
